@@ -1,0 +1,54 @@
+<div th:fragment="orderCreate">
+
+<div class="container" align="center">
+    
+    <h3>New Med-Bed Order</h3>
+</div>
+    
+<div class="container">
+       
+        <form th:action="@{/processOrder}" th:object="${order}"
+              enctype="multipart/form-data" method="post" style="max-width: 600px; margin: 0 auto;">
+
+             <div class="container"> <span style="font-weight:bold">Customer ID: </span>
+                 <input type="hidden" th:field="${customer.customerId}" >
+             <span style="color:blue" th:text="${customer.customerId}"></span></div>
+             
+            <div class="container"> <span style="font-weight:bold">Customer Name: </span>
+                <input type="hidden" th:value="${customer.fullName}" name= "customerName">
+             <span style="color:blue" th:text="${customer.fullName}"></span></div>
+
+            <div class="container"> <span style="font-weight:bold">Customer Email: </span>
+                <input type="hidden" th:value="${customer.email}" name= "customerEmail">
+                <span style="color:blue" th:text="${customer.email}"></span></div>
+
+            <div class="container"> <span style="font-weight:bold">Customer Address: </span>
+                <input type="hidden" th:value="${customer.address}" name= "customerAddress">
+                <span style="color:blue" th:text="${customer.address}"></span></div>
+				
+			 <div class="container"> <span style="font-weight:bold">Order Date: </span>
+                 <input type="hidden" th:value="${date}">
+             <span style="color:blue" th:text="${date}"></span></div>
+			
+			<div class="container"> <span style="font-weight:bold">Order Item: </span>
+             <span style="color:blue" th:text="${order.orderItemName}"></span></div>
+
+            <div class="container"> <span style="font-weight:bold">Order Item Price: </span>
+                <span style="color:blue" th:text="'$' + ${order.orderItemPrice}"></span></div>
+			
+			<div class="container">
+                <label class="col-4 col-form-label">Qty: </label>
+                <div class="col-8">
+                    <input type="number" th:field="*{qty}" class="form-control"
+                            required min="1" max="2" style="width:10%"/>
+                </div>
+                <br>
+             <p>Click on the "Choose File" button to upload ID  proof:</p>
+                <input type="file" id="file" name="file" required>
+                <br>
+                <div>
+                <button type="submit" class="btn btn-primary">Create Order</button>
+            </div>
+        </form>
+    </div>
+</div>

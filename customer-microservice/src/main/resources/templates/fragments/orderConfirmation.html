@@ -1,0 +1,36 @@
+<div th:fragment="orderConfirmation">
+
+<div class="container" align="center">
+    
+    <h3>Order Confirmation</h3>
+    
+</div>
+	
+	<div class="container">  <span style="font-weight:bold">Order ID: </span>
+      <span style="color:blue" th:text="${order.orderId}"></span></div>
+
+    <div class="container">  <span style="font-weight:bold">Customer ID: </span>
+      <span style="color:blue" th:text="${order.customerId}"></span></div>
+	
+    <div class="container">  <span style="font-weight:bold">Order Date: </span>
+        <span style="color:blue" th:text="${orderdate}"></span></div>
+	
+	<div class="container">  <span style="font-weight:bold">Order Item Name: </span>
+        <span style="color:blue" th:text="${order.orderItemName}"></span></div>
+	
+	<div class="container">  <span style="font-weight:bold">Order Item Price: </span>
+        <span style="color:blue" th:text="${'$' + order.orderItemPrice}"></span></div>
+
+    <div class="container">  <span style="font-weight:bold">Order Total Price: </span>
+    <span style="color:blue" th:text="${'$' + ordertotal}"></span></div>
+
+    <div class="container">  <span style="font-weight:bold">Customer Name: </span>
+        <span style="color:blue" th:text="${order.customerName}"></span></div>
+
+    <div class="container">  <span style="font-weight:bold">Customer Email: </span>
+        <span style="color:blue" th:text="${order.customerEmail}"></span></div>
+
+    <div class="container">  <span style="font-weight:bold">Customer Address: </span>
+        <span style="color:blue" th:text="${order.customerAddress}"></span></div>
+
+</div>

@@ -1,0 +1,25 @@
+<div th:fragment="dependentView">
+
+    <div class="container" align="center">
+
+        <h3>Dependent List</h3>
+
+    </div>
+
+    <div class="container">
+    <table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+    <tr>
+        <th align="left">Dependent ID</th>
+        <th align="left">Dependent Name</th>
+        <th align="left">Dependent Age</th>
+    </tr>
+    </thead>
+    <tr th:each="dependent : ${customer.dependents}">
+        <td th:text="${dependent.dependentId}" align="left"></td>
+        <td th:text="${dependent.fullName}" align="left"></td>
+        <td th:text="${dependent.age}" align="left" ></td>
+    </tr>
+</table>
+    </div>
+</div>

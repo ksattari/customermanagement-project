@@ -1,0 +1,24 @@
+<div th:fragment="customerInfo">
+
+<div class="container" align="center">
+    
+    <h3>Customer Information</h3>
+    
+</div>
+
+    <div class="container">  <span style="font-weight:bold">Customer ID: </span>
+      <span style="color:blue" th:text="${customer.customerId}"></span></div>
+
+    <div class="container">  <span style="font-weight:bold">Customer Name: </span>
+        <span style="color:blue" th:text="${customer.fullName}"></span></div>
+
+    <div class="container">  <span style="font-weight:bold">Customer Email: </span>
+        <span style="color:blue" th:text="${customer.email}"></span></div>
+
+    <div class="container">  <span style="font-weight:bold">Customer Age: </span>
+        <span style="color:blue" th:text="${customer.age}"></span></div>
+
+    <div class="container">  <span style="font-weight:bold">Customer Address: </span>
+        <span style="color:blue" th:text="${customer.address}"></span></div>
+
+</div>
