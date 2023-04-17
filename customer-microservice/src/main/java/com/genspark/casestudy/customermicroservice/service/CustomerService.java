@@ -9,6 +9,8 @@ public interface CustomerService {
 
     Customer saveCustomer(Customer customer);
     Customer findByEmail(String email);
+
+    Customer findCustomer(Long id);
     Attachment createAttachment(MultipartFile file) throws Exception;
 
     Order sendOrder(Order order);

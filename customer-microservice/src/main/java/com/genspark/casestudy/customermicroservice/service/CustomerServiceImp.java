@@ -14,6 +14,8 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.Optional;
+
 @Service
 @Slf4j
 public class CustomerServiceImp implements CustomerService{
@@ -33,6 +35,16 @@ public class CustomerServiceImp implements CustomerService{
     @Override
     public Customer findByEmail(String email) {
         return repo.findByEmail(email);
+    }
+
+    @Override
+    public Customer findCustomer(Long id) {
+        Optional<Customer> op =  repo.findById(id);
+        if(op.isPresent())
+            return op.get();
+
+        return null;
+
     }
 
 

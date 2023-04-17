@@ -39,6 +39,19 @@ public class CustomerController {
         return "register_form";
     }
 
+    @GetMapping("/login")
+    public String login(Model model, String error, String logout){
+
+        if (error != null)
+            model.addAttribute("errorMsg", "Your username and password are invalid.");
+
+        if (logout != null)
+            model.addAttribute("msg", "You have been logged out successfully.");
+
+
+        return "/login";
+    }
+
     @PostMapping("/process_register")
     public String processRegister(Customer customer) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();

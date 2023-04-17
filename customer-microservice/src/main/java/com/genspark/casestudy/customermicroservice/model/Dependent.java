@@ -1,6 +1,7 @@
 package com.genspark.casestudy.customermicroservice.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -8,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Table
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Dependent {
 
     @Id
@@ -19,5 +21,11 @@ public class Dependent {
 
     public String getFullName(){
         return firstName + " " + lastName;
+    }
+
+    public Dependent(String firstName, String lastName, Integer age) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
     }
 }

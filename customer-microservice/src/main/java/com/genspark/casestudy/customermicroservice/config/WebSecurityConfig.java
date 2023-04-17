@@ -53,6 +53,7 @@ public class WebSecurityConfig  {
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
+                .loginPage("/login")
                 .usernameParameter("email")
                 .defaultSuccessUrl("/customer")
                 .permitAll()
