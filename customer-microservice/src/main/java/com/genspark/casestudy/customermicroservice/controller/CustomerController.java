@@ -49,7 +49,7 @@ public class CustomerController {
             model.addAttribute("msg", "You have been logged out successfully.");
 
 
-        return "/login";
+        return "login";
     }
 
     @PostMapping("/process_register")
