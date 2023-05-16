@@ -1,0 +1,30 @@
+<div class="message-container" *ngIf="message">
+    {{ message }}
+  </div>
+<div class="card my-5">
+    <div class="card-body">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Order ID</th>
+            <th scope="col">Customer Name</th>
+            <th scope="col">Order Date</th>
+            <th scope="col">Order Qty</th>
+            <th scope="col">Order Total</th>
+            <th scope="col">Process Order</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders">
+            <td><a routerLink="/orders" (click)="openOrderItemDialog(order.orderId)"> {{order.orderId }}</a> </td>
+            <td>{{ order.customerName }}</td>
+            <td>{{ formatDate(order.orderDate.toString()) }}</td>
+            <td>{{ order.qty }}</td>
+            <td>{{ formatStringCurrency((order.orderItemPrice * order.qty).toString()) }}</td>
+            <td><button mat-raised-button class="blue-button" (click)="processOrder(order.orderId)">Process Order</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

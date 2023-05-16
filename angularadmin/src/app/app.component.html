@@ -1,0 +1,27 @@
+<mat-toolbar color="primary" style="margin-bottom: 20px;">
+  <mat-toolbar-row>
+    <div>
+      <a style="color: white; text-decoration: none;"[routerLink]="'/home'"
+      *ngIf="isLoggedIn; else notLoggedIn">
+        <h1>Magic Med-Bed Admin</h1>
+      </a>
+      <ng-template #notLoggedIn>
+        <h1>Magic Med-Bed Admin</h1>
+      </ng-template>
+    </div>
+    <div class="menu-container"  *ngIf="isLoggedIn">
+      <a mat-button [routerLink]="'/customers'">Customers</a>
+      <a mat-button [routerLink]="'/orders'">Orders</a>
+    </div>
+    <div class="logout-container"  *ngIf="isLoggedIn">
+      <span class="signout-text">sign out</span>
+      <a style="color: white; text-decoration: none;" mat-icon-button (click)="logout()">
+        <span class="material-icons">
+          logout
+        </span>
+      </a>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+<router-outlet></router-outlet>
+

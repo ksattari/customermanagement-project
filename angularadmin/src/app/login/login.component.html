@@ -1,0 +1,27 @@
+<div class="parent-container">
+    <mat-card>
+        <mat-card-header>
+          <mat-card-title>Login</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <form (ngSubmit)="onSubmit()">
+            <mat-form-field class="login-form-field">
+              <input matInput placeholder="Username" [(ngModel)]="username" name="username">
+            </mat-form-field>
+            <br>
+            <mat-form-field  class="login-form-field">
+              <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" [(ngModel)]="password" name="password">
+              <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </mat-form-field>
+            <br>
+            <mat-checkbox [(ngModel)]="rememberMe" name="rememberMe">Remember me</mat-checkbox>
+            <br>
+            <div class="button-container">
+                <button mat-raised-button color="primary" type="submit">Login</button>
+                <div class="error-message" *ngIf="error">{{ loginError }}</div>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+      
+</div>

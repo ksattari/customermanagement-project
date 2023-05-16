@@ -1,0 +1,34 @@
+/* .mat-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  } */
+  
+  .menu-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 73%;
+  }
+
+  .logout-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: auto;
+    font-size: 14px;
+    padding-right: 16px;
+  }
+  
+  .signout-text {
+    margin-right: 8px;
+  }
+
+  
+  
+ 
+  
+  
+  
+
+  

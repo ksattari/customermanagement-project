@@ -1,0 +1,11 @@
+.message-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px; /* set the height of the container as per your requirement */
+  }
+
+  .blue-button {
+    background-color: blue !important;
+    color: white !important;
+  }
