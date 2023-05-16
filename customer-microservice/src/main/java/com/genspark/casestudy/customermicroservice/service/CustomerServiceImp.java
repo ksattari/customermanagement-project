@@ -26,8 +26,12 @@ public class CustomerServiceImp implements CustomerService{
     @Autowired
     private RestTemplate restTemplate;
 
-    @Value("${saveOrderURL}")
+
     private String saveOrderURL;
+
+    public CustomerServiceImp(@Value("${saveOrderURL}")String url){
+        saveOrderURL = url;
+    }
 
     @Override
     public Customer saveCustomer(Customer customer) {return repo.save(customer);}
@@ -39,11 +43,8 @@ public class CustomerServiceImp implements CustomerService{
 
     @Override
     public Customer findCustomer(Long id) {
-        Optional<Customer> op =  repo.findById(id);
-        if(op.isPresent())
-            return op.get();
-
-        return null;
+        return repo.findById(id)
+                .orElse(null);
 
     }
 

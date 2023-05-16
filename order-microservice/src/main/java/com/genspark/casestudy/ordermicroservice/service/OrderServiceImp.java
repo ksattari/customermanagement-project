@@ -45,6 +45,11 @@ public class OrderServiceImp implements OrderService {
     }
 
     @Override
+    public void deleteOrder(Long orderId) {
+        repo.deleteById(orderId);
+    }
+
+    @Override
     public List<Order> getOrders() {
 
         List<Order> orders = repo.findAll();

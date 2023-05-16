@@ -19,6 +19,7 @@ import java.util.Optional;
 
 @RestController
 @Slf4j
+@CrossOrigin(origins = "http://localhost:4200")
 public class OrderServiceController {
 
     @Autowired
@@ -41,6 +42,11 @@ public class OrderServiceController {
     public List<Order> getOrders(){
 
         return orderService.getOrders();
+    }
+
+    @DeleteMapping("/deleteOrder/{id}")
+    public void deleteOrder(@PathVariable String id){
+        orderService.deleteOrder(Long.parseLong(id));
     }
 
     @GetMapping("/download/{fileId}")

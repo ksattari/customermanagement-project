@@ -23,4 +23,14 @@ public class Order {
     private Integer qty;
     private Attachment attachment;
 
+    public Order(Long customerId, String customerName, String customerEmail,
+                 String customerAddress, LocalDateTime orderDate, Integer qty, Attachment attachment) {
+        this.customerId = customerId;
+        this.customerName = customerName;
+        this.customerEmail = customerEmail;
+        this.customerAddress = customerAddress;
+        this.orderDate = orderDate;
+        this.qty = qty;
+        this.attachment = attachment;
+    }
 }
