@@ -9,6 +9,9 @@ import { tap } from 'rxjs/operators';
 export class AuthService {
   private baseUrl = 'http://localhost:7073';
   private loggedIn = new BehaviorSubject<boolean>(false);
+  public httpOptions = {
+    headers: new HttpHeaders()
+  };
 
   get isLoggedIn() {
     return this.loggedIn.asObservable();
@@ -22,12 +25,22 @@ export class AuthService {
 
   login(username: string, password: string): Observable<any> {
     return this.http.post(`${this.baseUrl}/api/login`, { username, password })
-    .pipe(
-      tap((res: any) => {
-        localStorage.setItem('access_token', res.access_token);
-        this.loggedIn.next(true);
-      })
-    );
+      .pipe(
+        tap((res: any) => {
+          console.log(res);
+          const token = res.access_token;
+          this.setAuthorizationHeader(token);
+          localStorage.setItem('access_token', token);
+          this.loggedIn.next(true);
+        })
+      );
+  }
+
+  private setAuthorizationHeader(token: string) {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+    this.httpOptions.headers = headers;
   }
 
   private checkAuthStatus() {
@@ -41,5 +54,10 @@ export class AuthService {
   logout() {
     localStorage.removeItem('access_token');
     this.loggedIn.next(false);
+    this.clearAuthorizationHeader();
+  }
+
+  private clearAuthorizationHeader() {
+    this.httpOptions.headers = new HttpHeaders();
   }
 }

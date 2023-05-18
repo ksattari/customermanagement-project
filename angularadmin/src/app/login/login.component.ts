@@ -14,8 +14,8 @@ export class LoginComponent {
   username: string;
   password: string;
   rememberMe: boolean;
-  error: string;
-  loginError: string;
+  errorMessage: string;
+  error: boolean = false
   private subscription: Subscription;
 
   constructor(
@@ -36,8 +36,8 @@ export class LoginComponent {
       // If username or password is empty, clear the fields and return
       this.username = '';
       this.password = '';
-      this.error = 'username/password error';
-      this.loginError = "username and password cannot be empty.";
+      this.errorMessage = "username and password cannot be empty.";
+      this.error = true;
       return;
     }
     this.authService.login(this.username, this.password)
@@ -47,9 +47,9 @@ export class LoginComponent {
           this.router.navigate(['/']);
         },
         error: error => {
-          console.log('Inside error');
-          this.error = error.error?.message || 'An error occurred during login.';
-          this.loginError = "Incorrect username or password. Please try again.";
+          this.error = true;
+          console.log(error);
+          this.errorMessage = error.error ? 'An error occurred during login.' : "Incorrect username or password. Please try again.";
           this.username = ''; // Clear username field
           this.password = ''; // Clear password field
         }

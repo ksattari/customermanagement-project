@@ -23,7 +23,7 @@ import { LoginComponent } from './login/login.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
-import { JWT_OPTIONS, JwtHelperService, JwtModule } from '@auth0/angular-jwt';
+import { JwtHelperService, JwtInterceptor, JwtModule } from '@auth0/angular-jwt';
 
 
 
@@ -63,7 +63,7 @@ import { JWT_OPTIONS, JwtHelperService, JwtModule } from '@auth0/angular-jwt';
       },
     }),
   ],
-  providers: [JwtHelperService],
+  providers: [JwtHelperService,JwtInterceptor],
   bootstrap: [AppComponent],
   
 })
