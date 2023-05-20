@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
-import { HttpClientModule } from '@angular/common/http'; 
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'; 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { OrderListComponent } from './order-list/order-list.component';
@@ -23,7 +23,10 @@ import { LoginComponent } from './login/login.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
-import { JwtHelperService, JwtInterceptor, JwtModule } from '@auth0/angular-jwt';
+import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
+import { JwtInterceptor } from './interceptor/jwt.interceptor';
+import { AuthGuard } from './auth.guard';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 
@@ -33,7 +36,8 @@ import { JwtHelperService, JwtInterceptor, JwtModule } from '@auth0/angular-jwt'
     OrderListComponent,
     HomeComponent,
     IdDialogComponent,
-    LoginComponent
+    LoginComponent,
+    NotFoundComponent
 
   ],
   imports: [
@@ -63,7 +67,10 @@ import { JwtHelperService, JwtInterceptor, JwtModule } from '@auth0/angular-jwt'
       },
     }),
   ],
-  providers: [JwtHelperService,JwtInterceptor],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    JwtHelperService, AuthGuard
+  ],
   bootstrap: [AppComponent],
   
 })

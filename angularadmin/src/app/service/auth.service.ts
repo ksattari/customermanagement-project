@@ -28,7 +28,8 @@ export class AuthService {
       .pipe(
         tap((res: any) => {
           console.log(res);
-          const token = res.access_token;
+          const token = res.token;
+          console.log("TOKEN: " + token);
           this.setAuthorizationHeader(token);
           localStorage.setItem('access_token', token);
           this.loggedIn.next(true);
